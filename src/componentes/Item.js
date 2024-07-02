@@ -7,11 +7,12 @@
 // MÉTODOS: Item no requiere de métodos.
 // PROPS: Item recibe como props el método para modificar la plataforma favorita y su respectivo nombre como contenido.
 
+import React from "react";
+
 export default function Item(props) {
-    return (
-      <>
-          // 🚩
-      </>
-    );
-  }
-  
+  const handleClick = () => {
+    props.selectFavoritePlatform(props.platformName);
+  };
+
+  return <li onClick={handleClick}>{props.platformName}</li>;
+}

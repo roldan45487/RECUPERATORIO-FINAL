@@ -10,11 +10,30 @@ const listadoPlataformas = ["Twitter", "Facebook", "Youtube"];
 // ESTADO: Listado no necesita manejar un estado.
 // MÉTODOS: Listado no requiere de métodos.
 // PROPS: Listado recibe el método heredado de App y se lo pasa a cada Item.
+import React from "react";
 
-export default function Tarjeta(props) {
+// Componente funcional Item
+function Item({ plataforma, seleccionarFavorita }) {
+  return (
+    <li key={plataforma}>
+      <button onClick={() => seleccionarFavorita(plataforma)}>
+        {plataforma}
+      </button>
+    </li>
+  );
+}
+
+// Componente funcional Tarjeta
+export default function Tarjeta({ seleccionarFavorita }) {
   return (
     <ul>
-      {/* 🚩 Implementar acá */}
+      {listadoPlataformas.map((plataforma) => (
+        <Item
+          key={plataforma}
+          plataforma={plataforma}
+          seleccionarFavorita={seleccionarFavorita}
+        />
+      ))}
     </ul>
   );
 }
